@@ -1,0 +1,23 @@
+<suite name="SuiteName">
+	
+	
+	<test name="Test A" allow-return-values="true">
+		<classes>
+			<class name="com.onlineshopping.core.testcases.DummyTestA" />
+		</classes>
+	</test>
+	
+	<test name="Test B" allow-return-values="true">
+		<classes>
+			<class name="com.onlineshopping.core.testcases.DummyTestB" />
+		</classes>
+	</test>
+	
+	<test name="Test C" allow-return-values="true">
+		<classes>
+			<class name="com.onlineshopping.core.testcases.DummyTestC" />
+		</classes>
+	</test>
+	
+</suite>
+
