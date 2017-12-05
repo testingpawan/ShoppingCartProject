@@ -114,20 +114,20 @@ public class BaseTestData {
      
      public void typeData(String Xpath , String data){
     	 driver.findElement(By.xpath(prop.getProperty(Xpath))).clear();
-    	 driver.findElement(By.xpath(prop.getProperty(Xpath))).sendKeys(data);
+    	 driver.findElement(By.xpath(prop.getProperty(Xpath))).sendKeys(prop.getProperty(data));
     	 
     	 
 }
 
    public void selectData(String day_Xpath ,String day,String month_xpath,String month,String year_Xpath , String year){
-	   driver.findElement(By.xpath(prop.getProperty(day_Xpath))).sendKeys(day);
-	   driver.findElement(By.xpath(prop.getProperty(month_xpath))).sendKeys(month);
-	   driver.findElement(By.xpath(prop.getProperty(year_Xpath))).sendKeys(year);
+	   driver.findElement(By.xpath(prop.getProperty(day_Xpath))).sendKeys(prop.getProperty(day));
+	   driver.findElement(By.xpath(prop.getProperty(month_xpath))).sendKeys(prop.getProperty(month));
+	   driver.findElement(By.xpath(prop.getProperty(year_Xpath))).sendKeys(prop.getProperty(year));
 	   
 	
 }
    public void selectData(String Xpath ,String value){
-	   driver.findElement(By.xpath(prop.getProperty(Xpath))).sendKeys(value);
+	   driver.findElement(By.xpath(prop.getProperty(Xpath))).sendKeys(prop.getProperty(value));
 	   
 	   
    }
@@ -135,8 +135,8 @@ public class BaseTestData {
    
       public void moveOverMouse(String Xpath){
     	  Actions action = new Actions(driver);
-    	  WebElement mainMenu = driver.findElement(By.xpath(prop.getProperty(Xpath)));
-    	  action.moveToElement(mainMenu).moveToElement(driver.findElement(By.xpath("submenuxpath"))).click().build().perform(); 
+    	  WebElement mainMenu = driver.findElement(By.xpath(prop.getProperty(Xpath)));    	  
+    	  action.moveToElement(mainMenu).build().perform(); 
 	   
    }
    
@@ -172,15 +172,17 @@ public class BaseTestData {
 	   return true;  
    }
    
-   public boolean  validateMessage(String test,String expectedTextKey){
-	   String actualTest=getElement(test).getText();
+   public boolean  validateMessage(String test,String expectedTextKey) {
+	   String actualTest=driver.findElement(By.xpath(prop.getProperty(test))).getText();	   
 	   String expectedTest=prop.getProperty(expectedTextKey);
-	   if (actualTest.equals(expectedTest))	
-		  
-	   return true;	   
-	   else
-		
-	   return false;	   
+	   if (actualTest.equals(expectedTest))
+		   
+	       return true;	   
+	   else		
+		   reportFailure("Data not Matching");
+	   
+	   return false;
+	   
    }
    
    public boolean  textDisplayed(String locatorkey){

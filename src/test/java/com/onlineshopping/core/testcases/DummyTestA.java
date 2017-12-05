@@ -1,5 +1,7 @@
 package com.onlineshopping.core.testcases;
 
+
+import org.openqa.selenium.By;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import com.onlineshopping.core.basedata.BaseTestData;
@@ -24,35 +26,34 @@ public class DummyTestA extends BaseTestData {
 		openBrowser("Chrome");
 		navigate("appurl");
 		click("sign_in_Button_Xpath");							
-		typeData("create_email_text_Xpath",prop.getProperty("emailId"));
+		typeData("create_email_text_Xpath","emailId");
 		click("create_Account_button_Xpath");		
 		click("gender_title_Xpath");
-		typeData("Fname_Xpath",prop.getProperty("Customer_First_Name"));
-		typeData("Lname_Xpath",prop.getProperty("Customer_Last_Name"));		
-		typeData("Passwrd_Xpath",prop.getProperty("Password"));
-		selectData("Dob_day_Xpath",prop.getProperty("BirthDay"),"Dob_Month_Xpath",prop.getProperty("BirthMonth"),"Dob_year_Xpath",prop.getProperty("BirthYear"));				
-		typeData("company_Xpath",prop.getProperty("Company"));
-		typeData("Address_Xpath",prop.getProperty("Address"));
-		typeData("city_Xpath",prop.getProperty("City"));
-		selectData("State_Xpath",prop.getProperty("State"));
-		typeData("Zipcode_Xpath",prop.getProperty("ZipCode"));
-		selectData("Country_Xpath",prop.getProperty("Country"));		
-		typeData("Add_Information_Xpath",prop.getProperty("Additional_info"));
-		typeData("Home_Phone_Xpath",prop.getProperty("Home_Number"));
-		typeData("Mobile_number_Xpath",prop.getProperty("Mobile_Number"));
-		typeData("Address_alias_Xpath",prop.getProperty("Address_Alias"));
+		typeData("Fname_Xpath","Customer_First_Name");
+		typeData("Lname_Xpath","Customer_Last_Name");		
+		typeData("Passwrd_Xpath","Password");
+		selectData("Dob_day_Xpath",("BirthDay"),"Dob_Month_Xpath","BirthMonth","Dob_year_Xpath","BirthYear");				
+		typeData("company_Xpath","Company");
+		typeData("Address_Xpath","Address");
+		typeData("city_Xpath","City");
+		selectData("State_Xpath","State");
+		typeData("Zipcode_Xpath","ZipCode");
+		selectData("Country_Xpath","Country");		
+		typeData("Add_Information_Xpath","Additional_info");
+		typeData("Home_Phone_Xpath","Home_Number");
+		typeData("Mobile_number_Xpath","Mobile_Number");
+		typeData("Address_alias_Xpath","Address_Alias");
 		click("Register_Button_Xpath");
 		
-	    /*typeData("userName","test1222@gmail.com");
+	  /*  typeData("userName","test1222@gmail.com");
 		typeData("pass","#####3######");
 		click("Signin");*/
-			             
-        textDisplayed("Welcome_validation");
 		
-       
-		
-		
-		
+		test.log(LogStatus.INFO,"Account  Created  Sucessfully");				             
+        validateMessage("Welcome_Account_Xpath","Welcome_Account_Message");
+        
+       	
+			
 		
 		
 		}
@@ -77,6 +78,8 @@ public class DummyTestA extends BaseTestData {
 		try{
 		click("T-Shirt_Xpath");
 		click("Size_T-Shirt_Xpath");
+				
+	
 		click("List_View_Xpath");		
 		click("Add_to_Cart_Button_Xpath");		
 		handlingFrames("Frame_Tag_Name_Xpath");
@@ -85,16 +88,20 @@ public class DummyTestA extends BaseTestData {
 		click("Printed_dress_Add_to_cart_Xpath");
         handlingFrames("Frame_Tag_Name_Xpath");
 		click("Proceed_to_Checkout_Xpath");		
-		
 		click("Shopping_Summary_Proceed_to_Checkout_Xpath");
 		click("Address_Summary_Proceed_to_Checkout_Xpath");
 		
-	    /*String A=driver.findElement(By.xpath("html/body/div[1]/div[2]/div/div[3]/div/div/form/div/div[2]/div[1]/div/div/table/tbody/tr/td[3]")).getText();
-	    System.out.println("value of A" +A);
+	    String A=driver.findElement(By.xpath("html/body/div[1]/div[2]/div/div[3]/div/div/form/div/div[2]/div[1]/div/div/table/tbody/tr/td[3]/strong")).getText();
+        System.out.println("value of A" +A);
+     
+ 	    String B=driver.findElement(By.xpath("html/body/div[1]/div[2]/div/div[3]/div/div/form/div/div[2]/div[1]/div/div/table/tbody/tr/td[4]/div")).getText();
+ 	    System.out.println("value of A" +B);
 	    
-		validateMessage(prop.getProperty("Shipping_Option_Message_Xpath"),"Shipping_Message");*/
+	    
+		validateMessage("Shipping_Option_Message_Xpath","Shipping_Message");
 		click("Terms_Conditions_Xpath");
 		click("Shipping_Proceed_to_Checkout_Xpath");
+		validateMessage("Total_Cost_Xpath","Total_Cost_Amount");
 		}
 		
 		catch(Exception E){
