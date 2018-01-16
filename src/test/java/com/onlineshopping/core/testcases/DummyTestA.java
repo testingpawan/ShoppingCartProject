@@ -44,6 +44,7 @@ public class DummyTestA extends BaseTestData {
 		typeData("Mobile_number_Xpath","Mobile_Number");
 		typeData("Address_alias_Xpath","Address_Alias");
 		click("Register_Button_Xpath");
+                System.out.println(E.getMessage());
 		
 	  /*  typeData("userName","test1222@gmail.com");
 		typeData("pass","#####3######");
